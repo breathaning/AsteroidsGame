@@ -1,10 +1,50 @@
-//your variable declarations here
+ArrayList<Character> keysDown = new ArrayList();
+ArrayList<Character> keysPressed = new ArrayList();
+
+Star[] stars = new Star[100];
+Spaceship ship;
+
 public void setup() 
 {
-  //your code here
+  size(500, 500);
+  ship = new Spaceship();
+  for (int i = 0; i < stars.length; i++) {
+    stars[i] = new Star();
+  }
 }
 public void draw() 
 {
-  //your code here
+  background(0, 0, 0);
+  
+  for (int i = 0; i < stars.length; i++) {
+    pushMatrix();
+    stars[i].show();
+    popMatrix();
+  }
+
+  double forwardDirection = 0;
+  if (keysDown.indexOf((Character)('w')) != -1) forwardDirection += 1;
+  if (keysDown.indexOf((Character)('s')) != -1) forwardDirection -= 1;
+  boolean hyperspace = (keysPressed.indexOf((Character)(' ')) != -1);
+  if (hyperspace) {
+    ship.hyperspace();
+  }
+  ship.update(forwardDirection);
+
+  pushMatrix();
+  ship.show();
+  popMatrix();
+
+  keysPressed.clear();
+}
+
+void keyPressed() {
+  if (keysDown.indexOf((Character)key) != -1) return;
+  keysDown.add((Character)key);
+  keysPressed.add((Character)key);
+}
+
+void keyReleased() {
+  keysDown.remove((Character)key);
 }
 

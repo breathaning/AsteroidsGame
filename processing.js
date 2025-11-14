@@ -8330,7 +8330,8 @@
         enabled = true
       }
     })();
-    attachEventHandler(curElement, "mousemove", function(e) {
+    // attachEventHandler(curElement, "mousemove", function(e) {
+    attachEventHandler(window, "mousemove", function(e) {
       updateMousePosition(curElement, e);
       if (typeof p.mouseMoved === "function" && !p.__mousePressed) p.mouseMoved();
       if (typeof p.mouseDragged === "function" && p.__mousePressed) {
@@ -8504,7 +8505,8 @@
           resetKeyPressed()
         })
       }
-      var keyTrigger = curSketch.options.globalKeyEvents ? window : curElement;
+      // var keyTrigger = curSketch.options.globalKeyEvents ? window : curElement;
+      var keyTrigger = window;
       attachEventHandler(keyTrigger, "keydown", handleKeydown);
       attachEventHandler(keyTrigger, "keypress", handleKeypress);
       attachEventHandler(keyTrigger, "keyup", handleKeyup);
