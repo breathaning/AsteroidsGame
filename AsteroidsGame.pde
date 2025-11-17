@@ -2,6 +2,7 @@ ArrayList<Character> keysDown = new ArrayList();
 ArrayList<Character> keysPressed = new ArrayList();
 
 Star[] stars = new Star[100];
+Asteroid[] asteroids = new Asteroid[5];
 Spaceship ship;
 
 public void setup() 
@@ -11,6 +12,9 @@ public void setup()
   for (int i = 0; i < stars.length; i++) {
     stars[i] = new Star();
   }
+  for (int i = 0; i < asteroids.length; i++) {
+    asteroids[i] = new Asteroid();
+  }
 }
 public void draw() 
 {
@@ -19,6 +23,13 @@ public void draw()
   for (int i = 0; i < stars.length; i++) {
     pushMatrix();
     stars[i].show();
+    popMatrix();
+  }
+  
+  for (int i = 0; i < asteroids.length; i++) {
+    pushMatrix();
+    asteroids[i].move();
+    asteroids[i].show();
     popMatrix();
   }
 
@@ -47,4 +58,3 @@ void keyPressed() {
 void keyReleased() {
   keysDown.remove((Character)key);
 }
-
