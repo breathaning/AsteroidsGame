@@ -1,4 +1,6 @@
 class Asteroid extends Floater {
+  private double rotationSpeed;
+  
   public Asteroid() {
     corners = 8;
     xCorners = new int[corners];
@@ -9,11 +11,17 @@ class Asteroid extends Floater {
     myPointDirection = Math.random() * 360;
     myXspeed = 3 * Math.cos(myPointDirection * PI / 180);
     myYspeed = 3 * Math.sin(myPointDirection * PI / 180);
+    rotationSpeed = 5 + Math.random() * 5;
+    if (Math.random() < 0.5) rotationSpeed *= -1;
     for (int i = 0; i < corners; i++) {
       double angle = (double)i / corners * TWO_PI;
-      double radius = 10 + Math.random() * 5;
+      double radius = 10 + Math.random() * 7;
       xCorners[i] = (int)(radius * Math.cos(angle));
       yCorners[i] = (int)(radius * Math.sin(angle));
     }
+  }
+  
+  public void update() {
+    myPointDirection += rotationSpeed;
   }
 }
