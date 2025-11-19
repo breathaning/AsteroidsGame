@@ -47,7 +47,6 @@ public void draw()
   ship.show();
   popMatrix();
   
-  int removedAsteroids = 0;
   for (int i = 0; i < asteroids.size(); i++) {
     Asteroid asteroid = asteroids.get(i);
     double distance = (double)dist((float)asteroid.getX(), (float)asteroid.getY(), (float)ship.getX(), (float)ship.getY());
