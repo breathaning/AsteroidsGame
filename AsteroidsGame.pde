@@ -2,7 +2,7 @@ ArrayList<Character> keysDown = new ArrayList();
 ArrayList<Character> keysPressed = new ArrayList();
 
 Star[] stars = new Star[100];
-Asteroid[] asteroids = new Asteroid[5];
+ArrayList<Asteroid> asteroids = new ArrayList();
 Spaceship ship;
 
 public void setup() 
@@ -12,8 +12,8 @@ public void setup()
   for (int i = 0; i < stars.length; i++) {
     stars[i] = new Star();
   }
-  for (int i = 0; i < asteroids.length; i++) {
-    asteroids[i] = new Asteroid();
+  for (int i = 0; i < 10; i++) {
+    asteroids.add(new Asteroid());
   }
 }
 public void draw() 
@@ -26,11 +26,11 @@ public void draw()
     popMatrix();
   }
   
-  for (int i = 0; i < asteroids.length; i++) {
+  for (int i = 0; i < asteroids.size(); i++) {
     pushMatrix();
-    asteroids[i].update();
-    asteroids[i].move();
-    asteroids[i].show();
+    asteroids.get(i).update();
+    asteroids.get(i).move();
+    asteroids.get(i).show();
     popMatrix();
   }
 
@@ -46,6 +46,16 @@ public void draw()
   pushMatrix();
   ship.show();
   popMatrix();
+  
+  int removedAsteroids = 0;
+  for (int i = 0; i < asteroids.size(); i++) {
+    Asteroid asteroid = asteroids.get(i);
+    double distance = (double)dist((float)asteroid.getX(), (float)asteroid.getY(), (float)ship.getX(), (float)ship.getY());
+    if (distance < 25) {
+      asteroid.resetPosition();
+      i--;
+    }
+  }
 
   keysPressed.clear();
 }
