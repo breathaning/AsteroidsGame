@@ -14,10 +14,10 @@ class Spaceship extends Floater
 
   public void hyperspace() {
     myCenterX = Math.random() * (width + 1);
-        myCenterY = Math.random() * (height + 1);
-        myPointDirection = Math.random() * 360;
-        myXspeed = 0;
-        myYspeed = 0;
+    myCenterY = Math.random() * (height + 1);
+    myPointDirection = Math.random() * 360;
+    myXspeed = 0;
+    myYspeed = 0;
   }
 
   public void update(double forwardDirection) {
@@ -26,8 +26,8 @@ class Spaceship extends Floater
     double difference = normalize(wantedDirection - currentDirection, TWO_PI, PI);
     myPointDirection = toDegrees(wantedDirection - difference);
     turn(toDegrees(difference * 0.1));
-    
-    double forward = 0.4 * forwardDirection;
+
+    double forward = 0.5 * forwardDirection;
     accelerate(forward);
     myXspeed *= 0.9;
     myYspeed *= 0.9;
@@ -45,8 +45,16 @@ class Spaceship extends Floater
   private double toDegrees(double angle) {
     return angle * 180 / PI;
   }
-  
+
   private double toRadians(double angle) {
     return angle * PI / 180;
+  }
+  
+  public double getX() {
+    return myCenterX;
+  }
+  
+  public double getY() {
+    return myCenterY;
   }
 }
