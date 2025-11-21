@@ -20,8 +20,9 @@ class Asteroid extends Floater {
     }
   }
 
-  public void update() {
+  public void move() {
     myPointDirection += rotationSpeed;
+    super.move();
   }
 
   public void resetPosition() {

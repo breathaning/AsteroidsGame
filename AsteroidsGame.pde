@@ -28,7 +28,6 @@ public void draw()
   
   for (int i = 0; i < asteroids.size(); i++) {
     pushMatrix();
-    asteroids.get(i).update();
     asteroids.get(i).move();
     asteroids.get(i).show();
     popMatrix();
