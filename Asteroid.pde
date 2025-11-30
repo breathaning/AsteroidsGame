@@ -14,7 +14,7 @@ class Asteroid extends Floater {
     if (Math.random() < 0.5) rotationSpeed *= -1;
     for (int i = 0; i < corners; i++) {
       double angle = (double)i / corners * TWO_PI;
-      double radius = 10 + Math.random() * 7;
+      double radius = 12 + Math.random() * 8;
       xCorners[i] = (int)(radius * Math.cos(angle));
       yCorners[i] = (int)(radius * Math.sin(angle));
     }
