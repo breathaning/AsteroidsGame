@@ -37,7 +37,7 @@ public void draw()
 
   double forwardDirection = 0;
   if (isKeyDown('w')) forwardDirection += 1;
-  if (isKeyDown('s')) forwardDirection -= 1;
+  //if (isKeyDown('s')) forwardDirection -= 1;
   boolean hyperspace = isKeyPressed(' ');
   if (hyperspace) {
     ship.hyperspace();
@@ -88,7 +88,7 @@ public void draw()
     }
     
     double distanceToShip = (double)dist((float)asteroid.getX(), (float)asteroid.getY(), (float)ship.getX(), (float)ship.getY());
-    if (distanceToShip < 25) {
+    if (distanceToShip < 30) {
       asteroid.resetPosition();
       i--;
       continue;
